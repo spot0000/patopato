@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>All toys | Patopato</title>
+<meta name="description" content="Patopato: 3D printable toys that make you go wow or haha. Pop-Eyed characters and Air Pressure launchers by Louis, an engineer dad. Even the springs are 3D printed.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='34' r='28' fill='%23ef7d1a'/%3E%3Ccircle cx='22' cy='28' r='9' fill='%23fff'/%3E%3Ccircle cx='42' cy='28' r='9' fill='%23fff'/%3E%3Ccircle cx='23' cy='29' r='4' fill='%23222'/%3E%3Ccircle cx='43' cy='29' r='4' fill='%23222'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top" id="top"></header>
+<main>
+<div class="wrap">
+<section class="page-head"><h1 id="toys-title">All toys</h1><p class="muted">Every toy links to where you can get it. Most are free on MakerWorld.</p></section>
+<section class="section" style="padding-top:12px">
+  <div class="tools">
+    <nav class="chips" id="filters" aria-label="Filter"></nav>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <input class="search" id="q" type="search" placeholder="Search toys" aria-label="Search toys">
+      <label class="count">Sort <select id="sort"><option value="pop">Most downloaded</option><option value="new">Newest</option></select></label>
+      <span class="count" id="found"></span>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+</div>
+</main>
+<footer class="foot" id="foot"></footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
