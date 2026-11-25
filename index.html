@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Patopato | Joy you can hold</title>
+<title>Patopato | Every toy, every platform</title>
 <meta name="description" content="Patopato: 3D printable toys that make you go wow or haha. Pop-Eyed characters and Air Pressure launchers by Louis, an engineer dad. Even the springs are 3D printed.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
@@ -15,39 +15,59 @@
 <header class="top" id="top"></header>
 <main>
 <div class="wrap">
-<section class="hero">
-  <h1>Joy you can hold.</h1>
-  <p class="sub">3D printable toys that make you go "wow" or "haha". Even the springs are 3D printed.</p>
-  <div class="gang" id="gang" aria-label="3D Pop-Eyed characters. Press and hold one to pop its eyes."><div class="note" id="gang-note">Loading the gang…</div></div>
-  <p class="hint">They're watching you. Press and hold one to pop its eyes.</p>
-</section>
-
-<section class="section">
-  <div class="feature">
-    <div class="car" aria-roledescription="carousel">
-      <div class="track" id="track">
-        <a class="slide" href="https://makerworld.com/en/models/2133204" target="_blank" rel="noopener"><img src="img/2133204.jpg" alt="Pop-Eyed Snowman"><div class="cap"><small>Christmas is coming</small><b>Pop-Eyed Snowman</b><span class="btn small">Download on MakerWorld</span></div></a>
-        <a class="slide" href="https://makerworld.com/en/models/3502170" target="_blank" rel="noopener"><img src="img/3502170.jpg" alt="Pop-Eyed Owl"><div class="cap"><small>New</small><b>Pop-Eyed Owl</b><span class="btn small">Download on MakerWorld</span></div></a>
-        <a class="slide" href="https://www.patreon.com/Patopato_design/posts/november-model-1-174243020" target="_blank" rel="noopener"><img src="img/p_pop-eyed-egg-gang.jpg" alt="Pop-Eyed Egg Gang"><div class="cap"><small>Only on Patreon</small><b>Pop-Eyed Egg Gang</b><span class="btn small">Get it on Patreon</span></div></a>
-        <a class="slide" href="https://makerworld.com/en/models/826990" target="_blank" rel="noopener"><img src="img/826990.jpg" alt="Air Pressure Tank V2"><div class="cap"><small>Most downloaded</small><b>Air Pressure Tank V2</b><span class="btn small">Download on MakerWorld</span></div></a>
-      </div>
-      <div class="dots" id="dots"></div>
-    </div>
-    <div class="side">
-      <a class="card-cta cta-patreon" href="https://www.patreon.com/Patopato_design" target="_blank" rel="noopener"><b>New toys every month</b><span>Patreon members get 2 new toys a month, plus toys you can't find anywhere else.</span><span class="btn">Join on Patreon</span></a>
-      <a class="card-cta cta-seller" href="sellers.html"><b>Sell Patopato toys</b><span>Print and sell 80+ Patopato toys at your market or shop, with an Authorized Seller Certificate.</span><span class="btn">See the license</span></a>
-    </div>
+<section class="hero hero-cat">
+  <p class="eyebrow">Patopato · 3D printable toys</p>
+  <h1>Every Patopato toy, on every platform.</h1>
+  <p class="sub">Pop-Eyed characters, Air Pressure launchers and more by Louis, an engineer dad. Even the springs are 3D printed.</p>
+  <ul class="stats" aria-label="Patopato in numbers">
+    <li><b><span id="stat-toys">100</span>+</b><span>toys</span></li>
+    <li><b>280K</b><span>downloads</span></li>
+    <li><b>198K</b><span>prints</span></li>
+    <li><b>20K</b><span>followers</span></li>
+    <li><b>38</b><span>seller certificates</span></li>
+  </ul>
+  <form class="bigsearch" action="toys.html" method="get" role="search">
+    <input id="home-q" name="q" type="search" placeholder="Find a toy, e.g. tank, duck, rocket" aria-label="Find a toy">
+    <button class="btn" type="submit">Search</button>
+  </form>
+  <div class="hero-btns">
+    <a class="btn" href="https://www.patreon.com/Patopato_design" target="_blank" rel="noopener">Join on Patreon</a>
+    <a class="btn dark" href="sellers.html">Sell Patopato toys</a>
   </div>
-  <nav class="chips" aria-label="Browse">
-    <a class="chip" href="toys.html#pop">Pop-Eyed</a><a class="chip" href="toys.html#air">Air Pressure</a><a class="chip" href="toys.html#hands">Robot hands</a>
-    <a class="chip" href="toys.html#spin">Spin &amp; fly</a><a class="chip" href="toys.html#puzzle">Puzzles</a><a class="chip" href="toys.html#xmas">Christmas</a>
-    <a class="chip" href="toys.html#patreon">Only on Patreon</a><a class="chip" href="toys.html">All toys</a>
-  </nav>
+  <p class="muted stat-note">Downloads, prints and followers are from MakerWorld, November 2026.</p>
 </section>
 
 <section class="section">
-  <div class="section-head"><h2>Christmas toys</h2><a class="more" href="toys.html#xmas">See all ›</a></div>
-  <div class="row" id="xmas-row"></div>
+  <div class="gang" id="gang" aria-label="3D Pop-Eyed characters. Press and hold one to pop its eyes."><div class="note" id="gang-note">Loading the gang…</div></div>
+  <p class="hint" style="text-align:center">Meet the Pop-Eyed gang. They're watching you. Press and hold one to pop its eyes.</p>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Browse by series</h2><a class="more" href="toys.html">All toys ›</a></div>
+  <div class="tiles" id="series"></div>
+</section>
+
+<section class="section">
+  <h2>For members and sellers</h2>
+  <div class="pay">
+    <a class="card-cta cta-patreon" href="https://www.patreon.com/Patopato_design" target="_blank" rel="noopener"><b>Patreon members</b><span>2 new toys every month, bonus toys, and <span id="pat-count">14</span> toys you can only get on Patreon.</span><span class="btn">Join on Patreon</span></a>
+    <a class="card-cta cta-seller" href="sellers.html"><b>Sellers</b><span>Print and sell 80+ Patopato toys with a commercial license and an Authorized Seller Certificate. 38 certificates issued so far.</span><span class="btn">See the license</span></a>
+  </div>
+  <div class="section-head" style="margin-top:6px"><h3>Only on Patreon</h3><a class="more" href="toys.html#patreon">See all ›</a></div>
+  <div class="row" id="patreon-row"></div>
+</section>
+
+<section class="section">
+  <h2>Find Patopato on</h2>
+  <div class="platforms">
+    <a href="https://makerworld.com/en/@spot5438" target="_blank" rel="noopener"><b>MakerWorld</b><span>Most toys, free to download</span></a>
+    <a href="https://www.patreon.com/Patopato_design" target="_blank" rel="noopener"><b>Patreon</b><span>Monthly toys and seller license</span></a>
+    <a href="https://thangs.com/designer/Patopato%20design" target="_blank" rel="noopener"><b>Thangs</b><span>Selected toys</span></a>
+    <a href="https://www.nexprint.com/en/search/creators?keyword=Patopato_design" target="_blank" rel="noopener"><b>Nexprint</b><span>30 toys</span></a>
+    <a href="https://makerworld.com/en/maker-kids/course/FCX8RW7V" target="_blank" rel="noopener"><b>MakerWorld course</b><span>Spin &amp; Discover! for kids</span></a>
+    <a href="https://www.youtube.com/@Patopato_design" target="_blank" rel="noopener"><b>YouTube</b><span>See them move</span></a>
+    <a href="https://www.instagram.com/patopato_design/" target="_blank" rel="noopener"><b>Instagram</b><span>New toys first</span></a>
+  </div>
 </section>
 
 <section class="section">
@@ -57,6 +77,7 @@
       <div class="mbody"><button type="button" class="crank" id="crank" aria-label="Turn the crank for a random toy">TURN</button><div class="slot"></div></div>
     </div>
     <div class="prize-area">
+      <p class="eyebrow">Play corner</p>
       <h2>Not sure what to print?</h2>
       <p class="muted">Turn the crank. A random Patopato toy pops out. <span id="total">100</span> toys inside.</p>
       <div id="prize"></div>
@@ -67,35 +88,9 @@
 </section>
 
 <section class="section">
-  <div class="section-head"><h2>News</h2></div>
-  <div class="news">
-    <a href="https://makerworld.com/en/maker-kids/course/FCX8RW7V" target="_blank" rel="noopener"><small>Nov 18 · Course</small><b>"Spin &amp; Discover!" spin-top class for kids is live on MakerWorld</b></a>
-    <a href="https://www.patreon.com/Patopato_design/posts/bonus-model-3-v2-175201324" target="_blank" rel="noopener"><small>Nov 13 · Patreon</small><b>Bonus toy: Pop-Eyed Snowman V2</b></a>
-    <a href="https://www.patreon.com/Patopato_design/posts/november-model-1-174243020" target="_blank" rel="noopener"><small>Nov 3 · Patreon</small><b>November toy: Pop-Eyed Egg Gang</b></a>
-    <a href="https://makerworld.com/en/models/3502170" target="_blank" rel="noopener"><small>Oct 27 · MakerWorld</small><b>New: Pop-Eyed Owl</b></a>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-head"><h2>Only on Patreon</h2><a class="more" href="toys.html#patreon">See all ›</a></div>
-  <div class="row" id="patreon-row"></div>
-</section>
-
-<section class="section">
-  <div class="story">
-    <img src="img/826990.jpg" alt="Air Pressure Tank V2 with its ammo box">
-    <div style="display:grid;gap:14px">
-      <blockquote>"After the first tank, there was ammo all over our floor. So the next tank got an ammo box 😆"</blockquote>
-      <p class="muted">Hi, I'm Louis, a mechanical engineer and a dad of two boys. My boys like every one of these toys.</p>
-      <a class="more" href="about.html">Read the story ›</a>
-    </div>
-  </div>
-</section>
-
-<section class="section">
   <div class="section-head"><h2>Picked for you</h2><a class="more" href="toys.html">All toys ›</a></div>
   <div class="grid" id="feed"></div>
-  <div style="text-align:center"><button type="button" class="btn ghost" id="feed-more">Show more toys</button></div>
+  <div style="text-align:center"><a class="btn ghost" href="toys.html">See all toys</a></div>
 </section>
 </div>
 </main>

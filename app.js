@@ -65,6 +65,16 @@
         new IntersectionObserver(es => { if (es[0].isIntersecting && auto < 3 && n < pool.length){ auto++; addMore(); } }, {rootMargin:'300px'}).observe(more); }
     }
   }
+  // series tiles with live counts
+  const tiles = document.getElementById('series');
+  if (tiles){
+    const S = [['pop','Pop-Eyed','Press them and the eyes pop out','2144875'],['air','Air Pressure','Punch it and it flies','726755'],['hands','Robot hands','Grab anything, even chips','850566'],['spin','Spin & fly','Spin tops and launchers','702556'],['puzzle','Puzzles','Pocket-size brain teasers','2938577']];
+    tiles.innerHTML = S.map(s => { const n = MW.filter(m => m.s === s[0]).length + PAT.filter(p => p.s === s[0]).length;
+      return '<a class="tile" href="toys.html#' + s[0] + '"><img loading="lazy" src="img/' + s[3] + '.jpg" alt=""><div><b>' + s[1] + '</b><span>' + s[2] + '</span><small>' + n + ' toys ›</small></div></a>'; }).join('');
+  }
+  const totalToys = document.getElementById('stat-toys');
+  if (totalToys) totalToys.textContent = (MW.length + PAT.length) + '';
+  const pc = document.getElementById('pat-count'); if (pc) pc.textContent = PAT.length;
   const patRow = document.getElementById('patreon-row');
   if (patRow) patRow.innerHTML = PAT.map(patCard).join('');
   const xmasRow = document.getElementById('xmas-row');
@@ -104,19 +114,28 @@
   const grid = document.getElementById('grid');
   if (grid){
     const chips = document.getElementById('filters'), q = document.getElementById('q'), sort = document.getElementById('sort'), count = document.getElementById('found');
-    const FILTERS = [['all','All toys'],['pop','Pop-Eyed'],['air','Air Pressure'],['hands','Robot hands'],['spin','Spin & fly'],['puzzle','Puzzles'],['more','More toys'],['xmas','Christmas'],['halloween','Halloween'],['patreon','Only on Patreon']];
+    const FILTERS = [['all','All toys'],['pop','Pop-Eyed'],['air','Air Pressure'],['hands','Robot hands'],['spin','Spin & fly'],['puzzle','Puzzles'],['more','More toys'],['xmas','Christmas'],['halloween','Halloween']];
+    const PLATFORMS = [['any','Every platform'],['MakerWorld','MakerWorld'],['Patreon','Only on Patreon'],['Thangs','Thangs'],['Nexprint','Nexprint']];
     chips.innerHTML = FILTERS.map(f => '<a class="chip" id="f-' + f[0] + '" href="#' + f[0] + '">' + f[1] + '</a>').join('');
+    const plat = document.getElementById('platform');
+    plat.innerHTML = PLATFORMS.map(p => '<option value="' + p[0] + '">' + p[1] + '</option>').join('');
+    const params = new URLSearchParams(location.search);
+    if (params.get('q')) q.value = params.get('q');
+    if (location.hash === '#patreon'){ plat.value = 'Patreon'; history.replaceState(null, '', location.pathname + location.search + '#all'); }
     function render(){
-      const f = (location.hash || '#all').slice(1), text = q.value.trim().toLowerCase();
+      const f = (location.hash || '#all').slice(1), text = q.value.trim().toLowerCase(), p = plat.value;
       chips.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.id === 'f-' + f));
-      let mw = MW.filter(m => f === 'all' || m.s === f || m.z === f), pat = PAT.filter(p => f === 'all' || f === 'patreon' || p.s === f || p.z === f);
-      if (f === 'patreon') mw = [];
-      if (text){ mw = mw.filter(m => m.t.toLowerCase().includes(text)); pat = pat.filter(p => p.t.toLowerCase().includes(text)); }
+      let mw = MW.filter(m => f === 'all' || m.s === f || m.z === f), pat = PAT.filter(x => f === 'all' || x.s === f || x.z === f);
+      if (p === 'Patreon') mw = [];
+      else if (p === 'MakerWorld') pat = [];
+      else if (p !== 'any'){ mw = mw.filter(m => m.x.includes(p)); pat = []; }
+      if (text){ mw = mw.filter(m => m.t.toLowerCase().includes(text)); pat = pat.filter(x => x.t.toLowerCase().includes(text)); }
       mw = mw.slice().sort(sort.value === 'new' ? (a, b) => b.p.localeCompare(a.p) : (a, b) => b.d - a.d);
-      grid.innerHTML = mw.map(mwCard).join('') + pat.map(patCard).join('');
+      grid.innerHTML = (mw.map(mwCard).join('') + pat.map(patCard).join('')) || '<p class="muted">No toys match. Try another word or platform.</p>';
       count.textContent = (mw.length + pat.length) + ' toys';
       const h = document.getElementById('toys-title'); if (h) h.textContent = (FILTERS.find(x => x[0] === f) || FILTERS[0])[1];
     }
+    plat.addEventListener('change', render);
     window.addEventListener('hashchange', render); q.addEventListener('input', render); sort.addEventListener('change', render); render();
   }
 
