@@ -3,7 +3,7 @@
   --bg:#fbf6ee; --surface:#ffffff; --ink:#22251f; --muted:#666a5c; --line:#ece3d3;
   --orange:#ef7d1a; --orange-ink:#b85500; --orange-soft:#fdeedd; --olive:#748a33; --olive-soft:#eef2e0;
   --stage:#e7e0d1; --dark:#22251f;
-  --display:"Fredoka",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --brand:"Fredoka",system-ui,sans-serif; --display:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -33,7 +33,7 @@ p{margin:0}
 /* header */
 .top{position:sticky;top:0;z-index:20;background:rgba(251,246,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
-.logo{font:700 24px var(--display);color:var(--orange);text-decoration:none;letter-spacing:.2px}
+.logo{font:700 24px var(--brand);color:var(--orange);text-decoration:none;letter-spacing:.2px}
 .nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .nav a{text-decoration:none;font-family:var(--display);font-weight:500}
 .nav a:not(.btn):hover{color:var(--orange-ink)}
@@ -192,3 +192,7 @@ p{margin:0}
 .platforms b{font:600 17px var(--display)}
 .platforms span{color:var(--muted);font-size:13.5px}
 .toys-tools select{font:inherit}
+
+/* Louis 11/26: rounded font felt cartoonish to read. Fredoka now only for the logo and the main headline. */
+.hero h1{font-family:var(--brand);font-weight:600;letter-spacing:-.5px}
+h2,h3{letter-spacing:-.3px}
