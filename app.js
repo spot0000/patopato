@@ -136,13 +136,14 @@
     if (params.get('q')) q.value = params.get('q');
     if (location.hash === '#patreon'){ plat.value = 'Patreon'; history.replaceState(null, '', location.pathname + location.search + '#all'); }
     function render(){
-      document.body.classList.toggle('cat-view', !!location.hash && location.hash !== '#all');
-      const DESC = {pop:['Pop-Eyed','Press them and the eyes pop out.'], air:['Air Pressure','Punch it and it flies. One hit launches the ammo.'],
+      // compact view everywhere except when someone searched from the homepage (Louis 11/27)
+      document.body.classList.toggle('cat-view', !q.value.trim());
+      const DESC = {all:['All toys','Every Patopato toy in one place.'], pop:['Pop-Eyed','Press them and the eyes pop out.'], air:['Air Pressure','Punch it and it flies. One hit launches the ammo.'],
         tanks:['Tanks','Air Pressure tanks that fire ammo. Kids play with them for hours.'], cars:['Cars','Air Pressure cars. More cars are on the way.'],
         apm:['APM','Air Pressure Modules: swap the modules, print less, play more.'], spin:['Spin Tops','Easy-print spin tops and launchers.'],
         hands:['Grabbers','Robot hands and grabbers. Grab anything, even chips.'], puzzle:['Puzzles','Pocket-size sliding puzzles.'],
         more:['More toys','Little gadgets and fun extras.'], xmas:['Christmas','Toys for the holidays.'], halloween:['Halloween','Spooky toys for October.']};
-      const d0 = DESC[(location.hash || '').slice(1)];
+      const d0 = DESC[(location.hash || '#all').slice(1)];
       if (d0){ document.getElementById('cat-title').textContent = d0[0]; document.getElementById('cat-desc').textContent = d0[1] + ' Free toys download on MakerWorld; members-only toys are on Patreon.'; }
       const f = (location.hash || '#all').slice(1), text = q.value.trim().toLowerCase(), p = plat.value;
       chips.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.id === 'f-' + f));
@@ -167,6 +168,8 @@
       const h = document.getElementById('toys-title'); if (h) h.textContent = (FILTERS.find(x => x[0] === f) || FILTERS[0])[1];
     }
     plat.addEventListener('change', render);
+    const catShow = document.getElementById('cat-show');
+    if (catShow){ catShow.value = plat.value === 'MakerWorld' || plat.value === 'Patreon' ? plat.value : 'any'; catShow.addEventListener('change', () => { plat.value = catShow.value; render(); }); }
     const catSort = document.getElementById('cat-sort');
     if (catSort){ catSort.value = sort.value; catSort.addEventListener('change', () => { sort.value = catSort.value; render(); }); sort.addEventListener('change', () => { catSort.value = sort.value; }); }
     [['show-all','any'],['show-free','MakerWorld'],['show-members','Patreon']].forEach(([id, v]) => { const b = document.getElementById(id); if (b) b.addEventListener('click', e => { e.preventDefault(); plat.value = v; render(); }); });

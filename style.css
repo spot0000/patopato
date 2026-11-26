@@ -299,3 +299,8 @@ h2,h3{letter-spacing:-.3px}
 .sortbox select{font:600 14px var(--display);color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:6px 30px 6px 14px;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#666 50%),linear-gradient(135deg,#666 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px;background-repeat:no-repeat}
 
 .pill .dlico{width:12px;height:12px;flex:0 0 auto}
+
+/* 3-flame pill: dark base so the flames stand out (Louis 11/27) */
+.pill.heat3{background:#2a1d14;color:#fff}
+.pill .fire{filter:saturate(1.3)}
+.sortrow{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:4px}
