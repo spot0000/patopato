@@ -254,3 +254,4 @@ h2,h3{letter-spacing:-.3px}
 .pfi img,.pfi svg{width:36px;height:36px;object-fit:contain;border-radius:8px}
 .pfi i{position:absolute;bottom:-6px;right:-8px;font:700 9px var(--display);font-style:normal;background:var(--orange);color:#fff;padding:1px 5px;border-radius:99px}
 .pfrow b{font:500 13px var(--display);white-space:nowrap}
+.topbar .logo,.topbar .tabs{grid-area:auto!important}
