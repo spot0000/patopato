@@ -16,13 +16,16 @@
   // header + footer
   const here = (location.pathname.split('/').pop() || 'index.html');
   const top = document.getElementById('top');
+  // right-side tabs in the same picture style (Louis 11/26)
+  const SIDE = [['toys.html','all','All toys',''],['sellers.html','sellers','Sellers',''],['about.html','about','About',''],[LINKS.patreon,'patreon','Join on Patreon',' pat']];
   // top nav: category tabs with simplified product pictures (Louis 11/26: combine with the text tabs, Apple-style)
   const TABS = [['pop','Pop-Eyed'],['air','Air Pressure'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles']];
   const curHash = (location.hash || '').slice(1);
+  const sideHtml = () => '<nav class="tabs side-tabs" aria-label="Main">' + SIDE.map(s => '<a class="tab' + s[3] + (here === s[0] && !(s[0] === 'toys.html' && curHash) ? ' on' : '') + '" href="' + s[0] + '"' + (s[0].startsWith('http') ? ' target="_blank" rel="noopener"' : '') + '><img src="img/cat-' + s[1] + '.png" alt="" width="44" height="44"><span>' + s[2] + '</span></a>').join('') + '</nav></div>';
   if (top) top.innerHTML = '<div class="wrap topbar"><a class="logo" href="index.html"><img src="img/logo.png" alt="" width="40" height="40">Patopato</a>' +
     '<nav class="tabs" aria-label="Toy categories">' + TABS.map(t => '<a class="tab' + (here === 'toys.html' && curHash === t[0] ? ' on' : '') + '" href="toys.html#' + t[0] + '"><img src="img/cat-' + t[0] + '.png" alt="" width="44" height="44"><span>' + t[1] + '</span></a>').join('') + '</nav>' +
-    '<nav class="nav" aria-label="Main"><a href="toys.html">All toys</a><a href="sellers.html">Sellers</a><a class="hide-s" href="about.html">About</a>' +
-    '<a class="btn small" href="' + LINKS.patreon + '" target="_blank" rel="noopener">Join on Patreon</a></nav></div>';
+    sideHtml();
+
   window.addEventListener('hashchange', () => { const h = location.hash.slice(1); document.querySelectorAll('.tabs .tab').forEach(x => x.classList.toggle('on', x.getAttribute('href') === 'toys.html#' + h)); });
   const foot = document.getElementById('foot');
   if (foot) foot.innerHTML = '<div class="wrap"><a class="logo" href="index.html" style="color:#fff"><img src="img/logo.png" alt="" width="48" height="48">Patopato</a>' +
