@@ -41,7 +41,7 @@
   // download pill with flames: 1K+ one, 5K+ two, 10K+ three (Louis 11/27)
   function dl(n){
     const t = n >= 10000 ? 3 : n >= 5000 ? 2 : n >= 1000 ? 1 : 0;
-    return '<span class="pill heat' + t + '">' + (t ? '<span class="fire" aria-hidden="true">' + '\u{1F525}'.repeat(t) + '</span>' : '') + k(n) + '<span class="word"> downloads</span></span>';
+    return '<span class="pill heat' + t + '">' + (t ? '<span class="fire" aria-hidden="true">' + '\u{1F525}'.repeat(t) + '</span>' : '') + '<svg class="dlico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M3 13h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' + k(n) + '<span class="word"> downloads</span></span>';
   }
   // compact cards (Louis 11/26): picture, title, one small line
   function mwCard(m){
