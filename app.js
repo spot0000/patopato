@@ -16,12 +16,12 @@
   // header + footer
   const here = (location.pathname.split('/').pop() || 'index.html');
   const top = document.getElementById('top');
-  if (top) top.innerHTML = '<div class="wrap"><a class="logo" href="index.html">Patopato</a><nav class="nav" aria-label="Main">' +
+  if (top) top.innerHTML = '<div class="wrap"><a class="logo" href="index.html"><img src="img/logo.png" alt="" width="40" height="40">Patopato</a><nav class="nav" aria-label="Main">' +
     '<a href="toys.html">All toys</a><a class="hide-s" href="toys.html#pop">Pop-Eyed</a><a class="hide-s" href="toys.html#air">Air Pressure</a>' +
     '<a href="sellers.html">Sellers</a><a class="hide-s" href="about.html">About</a>' +
     '<a class="btn small" href="' + LINKS.patreon + '" target="_blank" rel="noopener">Join on Patreon</a></nav></div>';
   const foot = document.getElementById('foot');
-  if (foot) foot.innerHTML = '<div class="wrap"><a class="logo" href="index.html" style="color:#fff">Patopato</a>' +
+  if (foot) foot.innerHTML = '<div class="wrap"><a class="logo" href="index.html" style="color:#fff"><img src="img/logo.png" alt="" width="48" height="48">Patopato</a>' +
     '<p>Toys by Louis, a mechanical engineer and a dad of two boys. Even the springs are 3D printed.</p>' +
     '<div class="links"><a href="' + LINKS.mw + '" target="_blank" rel="noopener">MakerWorld</a><a href="' + LINKS.patreon + '" target="_blank" rel="noopener">Patreon</a>' +
     '<a href="' + LINKS.thangs + '" target="_blank" rel="noopener">Thangs</a><a href="' + LINKS.nexprint + '" target="_blank" rel="noopener">Nexprint</a>' +

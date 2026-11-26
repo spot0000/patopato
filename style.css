@@ -205,3 +205,6 @@ h2,h3{letter-spacing:-.3px}
 .faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
 .faq summary{font:600 16px var(--display);cursor:pointer}
 .faq details p{margin-top:8px;color:var(--muted)}
+
+.logo{display:inline-flex;align-items:center;gap:10px}
+.logo img{border-radius:50%;flex:0 0 auto}
