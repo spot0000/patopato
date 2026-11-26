@@ -244,3 +244,13 @@ h2,h3{letter-spacing:-.3px}
 .tabdiv{flex:0 0 1px;align-self:stretch;margin:8px 4px;background:var(--line)}
 @media (max-width:1180px){.topbar .tabs{justify-content:flex-start;padding-left:8px}.topbar .tab{flex:0 0 auto}}
 .tab span{white-space:nowrap}.topbar .tab{min-width:max-content}
+
+/* platform icon row */
+.pfrow{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 6px}
+.pfrow a{flex:0 0 auto;width:96px;display:grid;justify-items:center;gap:8px;text-decoration:none;color:var(--ink);padding:8px 4px;border-radius:14px;transition:background .15s}
+.pfrow a:hover{background:#fff}
+.pfi{position:relative;width:60px;height:60px;border-radius:16px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;transition:transform .2s}
+.pfrow a:hover .pfi{transform:translateY(-3px)}
+.pfi img,.pfi svg{width:36px;height:36px;object-fit:contain;border-radius:8px}
+.pfi i{position:absolute;bottom:-6px;right:-8px;font:700 9px var(--display);font-style:normal;background:var(--orange);color:#fff;padding:1px 5px;border-radius:99px}
+.pfrow b{font:500 13px var(--display);white-space:nowrap}
