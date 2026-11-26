@@ -235,7 +235,7 @@ h2,h3{letter-spacing:-.3px}
 .tab.pat img{filter:drop-shadow(0 0 0 transparent)}
 @media (max-width:1180px){.side-tabs{border-left:0;padding-left:0}}
 @media (max-width:600px){.topbar .logo{font-size:0;gap:0}.topbar .logo img{width:36px;height:36px}}
-@media (max-width:600px){.topbar .tab.pat{order:-1}.topbar .tabdiv{display:none}}
+@media (max-width:600px){.topbar .tabdiv{display:none}}
 
 /* one evenly spread row of tabs (Louis 11/26) */
 .top .topbar{grid-template-columns:auto minmax(0,1fr)!important;grid-template-areas:none!important}
