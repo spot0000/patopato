@@ -69,7 +69,7 @@
   // series tiles with live counts
   const tiles = document.getElementById('series');
   if (tiles){
-    const S = [['pop','Pop-Eyed','Press them and the eyes pop out','2144875'],['air','Air Pressure','Punch it and it flies','726755'],['hands','Robot hands','Grab anything, even chips','850566'],['spin','Spin & fly','Spin tops and launchers','702556'],['puzzle','Puzzles','Pocket-size brain teasers','2938577']];
+    const S = [['pop','Pop-Eyed','Press them and the eyes pop out','2144875'],['air','Air Pressure','Punch it and it flies','726755'],['hands','Grabbers','Grab anything, even chips','850566'],['spin','Spin Tops','Spin tops and launchers','702556'],['puzzle','Puzzles','Pocket-size brain teasers','2938577']];
     tiles.innerHTML = S.map(s => { const n = MW.filter(m => m.s === s[0]).length + PAT.filter(p => p.s === s[0]).length;
       return '<a class="tile" href="toys.html#' + s[0] + '"><img loading="lazy" src="img/' + s[3] + '.jpg" alt=""><div><b>' + s[1] + '</b><span>' + s[2] + '</span><small>' + n + ' toys ›</small></div></a>'; }).join('');
   }
@@ -115,7 +115,7 @@
   const grid = document.getElementById('grid');
   if (grid){
     const chips = document.getElementById('filters'), q = document.getElementById('q'), sort = document.getElementById('sort'), count = document.getElementById('found');
-    const FILTERS = [['all','All toys'],['pop','Pop-Eyed'],['air','Air Pressure'],['hands','Robot hands'],['spin','Spin & fly'],['puzzle','Puzzles'],['more','More toys'],['xmas','Christmas'],['halloween','Halloween']];
+    const FILTERS = [['all','All toys'],['pop','Pop-Eyed'],['air','Air Pressure'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles'],['more','More toys'],['xmas','Christmas'],['halloween','Halloween']];
     const PLATFORMS = [['any','Every platform'],['MakerWorld','MakerWorld'],['Patreon','Only on Patreon'],['Thangs','Thangs'],['Nexprint','Nexprint']];
     chips.innerHTML = FILTERS.map(f => '<a class="chip" id="f-' + f[0] + '" href="#' + f[0] + '">' + f[1] + '</a>').join('');
     const plat = document.getElementById('platform');
@@ -126,7 +126,8 @@
     function render(){
       const f = (location.hash || '#all').slice(1), text = q.value.trim().toLowerCase(), p = plat.value;
       chips.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.id === 'f-' + f));
-      let mw = MW.filter(m => f === 'all' || m.s === f || m.z === f), pat = PAT.filter(x => f === 'all' || x.s === f || x.z === f);
+      const hit = x => f === 'all' || x.s === f || x.z === f || (f === 'apm' && /APM/.test(x.t));
+      let mw = MW.filter(hit), pat = PAT.filter(hit);
       if (p === 'Patreon') mw = [];
       else if (p === 'MakerWorld') pat = [];
       else if (p !== 'any'){ mw = mw.filter(m => m.x.includes(p)); pat = []; }
