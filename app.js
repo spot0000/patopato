@@ -19,7 +19,7 @@
   // right-side tabs in the same picture style (Louis 11/26)
   const SIDE = [['toys.html','all','All toys',''],['sellers.html','sellers','Sellers',''],['about.html','about','About',''],[LINKS.patreon,'patreon','Join on Patreon',' pat']];
   // top nav: category tabs with simplified product pictures (Louis 11/26: combine with the text tabs, Apple-style)
-  const TABS = [['pop','Pop-Eyed'],['air','Air Pressure'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles']];
+  const TABS = [['pop','Pop-Eyed'],['air','Air Pressure'],['tanks','Tanks'],['cars','Cars'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles']];
   const curHash = (location.hash || '').slice(1);
   const sideHtml = () => '<span class="tabdiv" aria-hidden="true"></span>' + SIDE.map(s => '<a class="tab' + s[3] + (here === s[0] && !(s[0] === 'toys.html' && curHash) ? ' on' : '') + '" href="' + s[0] + '"' + (s[0].startsWith('http') ? ' target="_blank" rel="noopener"' : '') + '><img src="img/cat-' + s[1] + '.png" alt="" width="44" height="44"><span>' + s[2] + '</span></a>').join('') + '</nav></div>';
   if (top) top.innerHTML = '<div class="wrap topbar"><a class="logo" href="index.html"><img src="img/logo.png" alt="" width="40" height="40">Patopato</a>' +
@@ -122,7 +122,7 @@
   const grid = document.getElementById('grid');
   if (grid){
     const chips = document.getElementById('filters'), q = document.getElementById('q'), sort = document.getElementById('sort'), count = document.getElementById('found');
-    const FILTERS = [['all','All toys'],['pop','Pop-Eyed'],['air','Air Pressure'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles'],['more','More toys'],['xmas','Christmas'],['halloween','Halloween']];
+    const FILTERS = [['all','All toys'],['pop','Pop-Eyed'],['air','Air Pressure'],['tanks','Tanks'],['cars','Cars'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles'],['more','More toys'],['xmas','Christmas'],['halloween','Halloween']];
     const PLATFORMS = [['any','Free + members'],['MakerWorld','Free (MakerWorld)'],['Patreon','Members (Patreon)'],['Thangs','Thangs'],['Nexprint','Nexprint']];
     chips.innerHTML = FILTERS.map(f => '<a class="chip" id="f-' + f[0] + '" href="#' + f[0] + '">' + f[1] + '</a>').join('');
     const plat = document.getElementById('platform');
@@ -133,7 +133,7 @@
     function render(){
       const f = (location.hash || '#all').slice(1), text = q.value.trim().toLowerCase(), p = plat.value;
       chips.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.id === 'f-' + f));
-      const hit = x => f === 'all' || x.s === f || x.z === f || (f === 'apm' && /APM/.test(x.t));
+      const hit = x => f === 'all' || x.s === f || x.z === f || (f === 'apm' && /APM/.test(x.t)) || (f === 'tanks' && /tank/i.test(x.t)) || (f === 'cars' && /(^|[^a-z])car([^a-z]|$)|roadster/i.test(x.t));
       let mw = MW.filter(hit), pat = PAT.filter(hit);
       if (p === 'Patreon') mw = [];
       else if (p === 'MakerWorld') pat = [];

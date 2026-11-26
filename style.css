@@ -257,3 +257,5 @@ h2,h3{letter-spacing:-.3px}
 .topbar .logo,.topbar .tabs{grid-area:auto!important}
 
 .tag.free{background:#e3f1df;color:#2f6b2a}
+
+.top .wrap.topbar{max-width:1480px}
