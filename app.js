@@ -162,6 +162,13 @@
         price: (a, b) => a.price - b.price || b.pop - a.pop
       }[sort.value] || ((a, b) => b.pop - a.pop);
       items.sort(by);
+      // Most popular: mix the members toys in at random spots so they show up near the top too (Louis 11/27)
+      if ((sort.value || 'pop') === 'pop'){
+        const free = items.filter(i => i.kind === 'mw'), paid = items.filter(i => i.kind === 'pat').sort(() => Math.random() - 0.5);
+        const mixed = []; let next = 1 + Math.floor(Math.random() * 2);
+        free.forEach((it, idx) => { mixed.push(it); if (idx + 1 === next && paid.length){ mixed.push(paid.shift()); next += 2 + Math.floor(Math.random() * 3); } });
+        items.splice(0, items.length, ...mixed, ...paid);
+      }
       grid.innerHTML = items.map(it => it.kind === 'mw' ? mwCard(it.o) : patCard(it.o)).join('') || '<p class="muted">No toys match. Try another word or platform.</p>';
       count.textContent = (mw.length + pat.length) + ' toys';
       [['show-all','any'],['show-free','MakerWorld'],['show-members','Patreon']].forEach(([id, v]) => { const b = document.getElementById(id); if (b) b.classList.toggle('on', p === v); });
