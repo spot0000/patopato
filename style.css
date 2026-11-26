@@ -255,3 +255,5 @@ h2,h3{letter-spacing:-.3px}
 .pfi i{position:absolute;bottom:-6px;right:-8px;font:700 9px var(--display);font-style:normal;background:var(--orange);color:#fff;padding:1px 5px;border-radius:99px}
 .pfrow b{font:500 13px var(--display);white-space:nowrap}
 .topbar .logo,.topbar .tabs{grid-area:auto!important}
+
+.tag.free{background:#e3f1df;color:#2f6b2a}

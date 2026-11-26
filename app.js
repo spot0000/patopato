@@ -41,11 +41,11 @@
   function mwCard(m){
     const tags = m.x.map(t => '<span class="tag">' + esc(t) + '</span>').join('');
     return '<a class="toy" href="' + mwUrl(m.id) + '" target="_blank" rel="noopener"><img loading="lazy" src="img/' + m.id + '.jpg" alt="' + esc(m.t) + '">' +
-      '<div class="body"><b>' + esc(m.t) + '</b><div class="meta"><span>' + k(m.d) + ' downloads</span>' + tags + '</div><span class="go">Download on MakerWorld ›</span></div></a>';
+      '<div class="body"><b>' + esc(m.t) + '</b><div class="meta"><span class="tag free">Free</span><span>' + k(m.d) + ' downloads</span>' + tags + '</div><span class="go">Download on MakerWorld ›</span></div></a>';
   }
   function patCard(p){
     return '<a class="toy" href="' + p.u + '" target="_blank" rel="noopener"><img loading="lazy" src="img/' + p.img + '" alt="' + esc(p.t) + '">' +
-      '<div class="body"><b>' + esc(p.t) + '</b><div class="meta"><span class="tag pat">Only on Patreon</span></div><span class="go">Get it on Patreon ›</span></div></a>';
+      '<div class="body"><b>' + esc(p.t) + '</b><div class="meta"><span class="tag pat">Members</span><span>Only on Patreon</span></div><span class="go">Get it on Patreon ›</span></div></a>';
   }
   window.PP_CARDS = {mwCard, patCard};
 
@@ -123,7 +123,7 @@
   if (grid){
     const chips = document.getElementById('filters'), q = document.getElementById('q'), sort = document.getElementById('sort'), count = document.getElementById('found');
     const FILTERS = [['all','All toys'],['pop','Pop-Eyed'],['air','Air Pressure'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles'],['more','More toys'],['xmas','Christmas'],['halloween','Halloween']];
-    const PLATFORMS = [['any','Every platform'],['MakerWorld','MakerWorld'],['Patreon','Only on Patreon'],['Thangs','Thangs'],['Nexprint','Nexprint']];
+    const PLATFORMS = [['any','Free + members'],['MakerWorld','Free (MakerWorld)'],['Patreon','Members (Patreon)'],['Thangs','Thangs'],['Nexprint','Nexprint']];
     chips.innerHTML = FILTERS.map(f => '<a class="chip" id="f-' + f[0] + '" href="#' + f[0] + '">' + f[1] + '</a>').join('');
     const plat = document.getElementById('platform');
     plat.innerHTML = PLATFORMS.map(p => '<option value="' + p[0] + '">' + p[1] + '</option>').join('');
@@ -142,9 +142,12 @@
       mw = mw.slice().sort(sort.value === 'new' ? (a, b) => b.p.localeCompare(a.p) : (a, b) => b.d - a.d);
       grid.innerHTML = (mw.map(mwCard).join('') + pat.map(patCard).join('')) || '<p class="muted">No toys match. Try another word or platform.</p>';
       count.textContent = (mw.length + pat.length) + ' toys';
+      [['show-all','any'],['show-free','MakerWorld'],['show-members','Patreon']].forEach(([id, v]) => { const b = document.getElementById(id); if (b) b.classList.toggle('on', p === v); });
       const h = document.getElementById('toys-title'); if (h) h.textContent = (FILTERS.find(x => x[0] === f) || FILTERS[0])[1];
     }
     plat.addEventListener('change', render);
+    [['show-all','any'],['show-free','MakerWorld'],['show-members','Patreon']].forEach(([id, v]) => { const b = document.getElementById(id); if (b) b.addEventListener('click', e => { e.preventDefault(); plat.value = v; render(); }); });
+    if (params.get('show') === 'members') plat.value = 'Patreon'; else if (params.get('show') === 'free') plat.value = 'MakerWorld';
     window.addEventListener('hashchange', render); q.addEventListener('input', render); sort.addEventListener('change', render); render();
   }
 
