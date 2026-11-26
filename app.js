@@ -38,14 +38,14 @@
     '<small>© ' + new Date().getFullYear() + ' Patopato Design</small></div>';
 
   // cards
+  // compact cards (Louis 11/26): picture, title, one small line
   function mwCard(m){
-    const tags = m.x.map(t => '<span class="tag">' + esc(t) + '</span>').join('');
-    return '<a class="toy" href="' + mwUrl(m.id) + '" target="_blank" rel="noopener"><img loading="lazy" src="img/' + m.id + '.jpg" alt="' + esc(m.t) + '">' +
-      '<div class="body"><b>' + esc(m.t) + '</b><div class="meta"><span class="tag free">Free</span><span>' + k(m.d) + ' downloads</span>' + tags + '</div><span class="go">Download on MakerWorld ›</span></div></a>';
+    return '<a class="toy" href="' + mwUrl(m.id) + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + m.id + '.jpg" alt="' + esc(m.t) + '"><i class="badge free">Free</i></span>' +
+      '<div class="body"><b>' + esc(m.t) + '</b><span class="go">Download ›</span></div></a>';
   }
   function patCard(p){
-    return '<a class="toy" href="' + p.u + '" target="_blank" rel="noopener"><img loading="lazy" src="img/' + p.img + '" alt="' + esc(p.t) + '">' +
-      '<div class="body"><b>' + esc(p.t) + '</b><div class="meta"><span class="tag pat">Members</span><span>Only on Patreon</span></div><span class="go">Get it on Patreon ›</span></div></a>';
+    return '<a class="toy" href="' + p.u + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + p.img + '" alt="' + esc(p.t) + '"><i class="badge pat">Members</i></span>' +
+      '<div class="body"><b>' + esc(p.t) + '</b><span class="go">Get it on Patreon ›</span></div></a>';
   }
   window.PP_CARDS = {mwCard, patCard};
 
@@ -131,6 +131,7 @@
     if (params.get('q')) q.value = params.get('q');
     if (location.hash === '#patreon'){ plat.value = 'Patreon'; history.replaceState(null, '', location.pathname + location.search + '#all'); }
     function render(){
+      document.body.classList.toggle('cat-view', !!location.hash && location.hash !== '#all');
       const f = (location.hash || '#all').slice(1), text = q.value.trim().toLowerCase(), p = plat.value;
       chips.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.id === 'f-' + f));
       const hit = x => f === 'all' || x.s === f || x.z === f || (f === 'apm' && /APM/.test(x.t)) || (f === 'tanks' && /tank/i.test(x.t)) || (f === 'cars' && /(^|[^a-z])car([^a-z]|$)|roadster/i.test(x.t));

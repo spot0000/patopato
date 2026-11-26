@@ -259,3 +259,15 @@ h2,h3{letter-spacing:-.3px}
 .tag.free{background:#e3f1df;color:#2f6b2a}
 
 .top .wrap.topbar{max-width:1480px}
+
+/* compact toy cards + category view (Louis 11/26) */
+.toy .pic{position:relative;display:block}
+.toy .badge{position:absolute;top:6px;left:6px;font:700 10.5px var(--display);font-style:normal;padding:2px 7px;border-radius:99px;background:rgba(255,255,255,.92);color:#2f6b2a}
+.toy .badge.pat{background:var(--orange);color:#fff}
+.toy .body{padding:8px 10px 10px;gap:2px}
+.toy b{font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.toy .go{font-size:12.5px}
+.grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+@media (max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.toy .body{padding:6px 8px 8px}.toy b{font-size:13px}}
+.cat-view .page-head,.cat-view .tools{display:none}
+.cat-view main .section{padding-top:16px}
