@@ -49,7 +49,7 @@
       '<div class="body"><b>' + esc(m.t) + '</b><span class="line">' + dl(m.d) + '<span class="go">Download ›</span></span></div></a>';
   }
   function patCard(p){
-    return '<a class="toy" href="' + p.u + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + p.img + '" alt="' + esc(p.t) + '"><i class="badge pat">Members</i></span>' +
+    return '<a class="toy" href="' + p.u + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + p.img + '" alt="' + esc(p.t) + '">' + (p.pr === 0 ? '<i class="badge free">Free</i>' : '<i class="badge pat">Members</i>') + '</span>' +
       '<div class="body"><b>' + esc(p.t) + '</b><span class="line">' + (p.pr === 0 ? '<span class="pill free">Free</span>' : p.pr ? '<span class="pill price">$' + p.pr + '</span>' : '<span class="pill price">Members</span>') + '<span class="go">Patreon ›</span></span></div></a>';
   }
   window.PP_CARDS = {mwCard, patCard};
