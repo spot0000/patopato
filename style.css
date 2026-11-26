@@ -282,3 +282,15 @@ h2,h3{letter-spacing:-.3px}
 .toy .val{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .toy .line .go{white-space:nowrap}
 .toy{min-width:0}.toy .body{min-width:0}.toy b{overflow-wrap:anywhere}@media (max-width:480px){.toy .line .go{display:none}}
+
+/* capsule pills on cards (Louis 11/27) */
+.pill{display:inline-flex;align-items:center;gap:3px;padding:2px 9px;border-radius:999px;font:600 12px var(--display);font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.5}
+.pill .fire{font-size:10.5px;letter-spacing:-2px;margin-right:2px}
+.pill.heat0{background:#efe9de;color:#5d5a50}
+.pill.heat1{background:#fdeedd;color:#9a4a00}
+.pill.heat2{background:#fbd9b4;color:#8a3d00}
+.pill.heat3{background:#ef7d1a;color:#fff}
+.pill.free{background:#e3f1df;color:#2f6b2a}
+.pill.price{background:#fff;color:#b85500;box-shadow:inset 0 0 0 1.5px #ef7d1a}
+.toy .line{margin-top:4px}
+@media (max-width:480px){.pill .word{display:none}}

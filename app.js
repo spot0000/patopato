@@ -38,14 +38,19 @@
     '<small>© ' + new Date().getFullYear() + ' Patopato Design</small></div>';
 
   // cards
+  // download pill with flames: 1K+ one, 5K+ two, 10K+ three (Louis 11/27)
+  function dl(n){
+    const t = n >= 10000 ? 3 : n >= 5000 ? 2 : n >= 1000 ? 1 : 0;
+    return '<span class="pill heat' + t + '">' + (t ? '<span class="fire" aria-hidden="true">' + '\u{1F525}'.repeat(t) + '</span>' : '') + k(n) + '<span class="word"> downloads</span></span>';
+  }
   // compact cards (Louis 11/26): picture, title, one small line
   function mwCard(m){
     return '<a class="toy" href="' + mwUrl(m.id) + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + m.id + '.jpg" alt="' + esc(m.t) + '"><i class="badge free">Free</i></span>' +
-      '<div class="body"><b>' + esc(m.t) + '</b><span class="line"><span class="val">' + k(m.d) + ' downloads</span><span class="go">Download ›</span></span></div></a>';
+      '<div class="body"><b>' + esc(m.t) + '</b><span class="line">' + dl(m.d) + '<span class="go">Download ›</span></span></div></a>';
   }
   function patCard(p){
     return '<a class="toy" href="' + p.u + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + p.img + '" alt="' + esc(p.t) + '"><i class="badge pat">Members</i></span>' +
-      '<div class="body"><b>' + esc(p.t) + '</b><span class="line"><span class="val">' + (p.pr === 0 ? 'Free' : p.pr ? '$' + p.pr : 'Members') + '</span><span class="go">Patreon ›</span></span></div></a>';
+      '<div class="body"><b>' + esc(p.t) + '</b><span class="line">' + (p.pr === 0 ? '<span class="pill free">Free</span>' : p.pr ? '<span class="pill price">$' + p.pr + '</span>' : '<span class="pill price">Members</span>') + '<span class="go">Patreon ›</span></span></div></a>';
   }
   window.PP_CARDS = {mwCard, patCard};
 
