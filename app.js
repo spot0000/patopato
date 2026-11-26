@@ -27,6 +27,7 @@
     '<a href="' + LINKS.thangs + '" target="_blank" rel="noopener">Thangs</a><a href="' + LINKS.nexprint + '" target="_blank" rel="noopener">Nexprint</a>' +
     '<a href="' + LINKS.course + '" target="_blank" rel="noopener">MakerWorld course</a><a href="' + LINKS.yt + '" target="_blank" rel="noopener">YouTube</a>' +
     '<a href="' + LINKS.ig + '" target="_blank" rel="noopener">Instagram</a><a href="sellers.html">Sell Patopato toys</a><a href="about.html">About</a></div>' +
+    '<p>Questions, wholesale or collaboration: <a href="mailto:hi@patopatodesign.com">hi@patopatodesign.com</a></p>' +
     '<small>© ' + new Date().getFullYear() + ' Patopato Design</small></div>';
 
   // cards
