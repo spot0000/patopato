@@ -41,11 +41,11 @@
   // compact cards (Louis 11/26): picture, title, one small line
   function mwCard(m){
     return '<a class="toy" href="' + mwUrl(m.id) + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + m.id + '.jpg" alt="' + esc(m.t) + '"><i class="badge free">Free</i></span>' +
-      '<div class="body"><b>' + esc(m.t) + '</b><span class="go">Download ›</span></div></a>';
+      '<div class="body"><b>' + esc(m.t) + '</b><span class="line"><span class="val">' + k(m.d) + ' downloads</span><span class="go">Download ›</span></span></div></a>';
   }
   function patCard(p){
     return '<a class="toy" href="' + p.u + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + p.img + '" alt="' + esc(p.t) + '"><i class="badge pat">Members</i></span>' +
-      '<div class="body"><b>' + esc(p.t) + '</b><span class="go">Get it on Patreon ›</span></div></a>';
+      '<div class="body"><b>' + esc(p.t) + '</b><span class="line"><span class="val">' + (p.pr === 0 ? 'Free' : p.pr ? '$' + p.pr : 'Members') + '</span><span class="go">Patreon ›</span></span></div></a>';
   }
   window.PP_CARDS = {mwCard, patCard};
 
