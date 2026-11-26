@@ -304,3 +304,13 @@ h2,h3{letter-spacing:-.3px}
 .pill.heat3{background:#2a1d14;color:#fff}
 .pill .fire{filter:saturate(1.3)}
 .sortrow{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:4px}
+
+/* phones with large text settings: never let the page get wider than the screen (Louis 11/27) */
+html,body{overflow-x:clip;max-width:100%}
+h1,h2,.sub,.stats li{overflow-wrap:anywhere}
+.hero-btns .btn{white-space:normal;text-align:center}
+.bigsearch .btn{flex:0 0 auto}
+@media (max-width:480px){.stats{gap:8px 18px}.stats b{font-size:26px}.hero-cat h1{font-size:30px}}
+.hero,.section,.page-head,.cat-head{grid-template-columns:minmax(0,1fr)}
+.hero-cat h1,.hero .sub{max-width:min(18ch,100%)}
+.hero .sub{max-width:min(60ch,100%)}
