@@ -132,6 +132,13 @@
     if (location.hash === '#patreon'){ plat.value = 'Patreon'; history.replaceState(null, '', location.pathname + location.search + '#all'); }
     function render(){
       document.body.classList.toggle('cat-view', !!location.hash && location.hash !== '#all');
+      const DESC = {pop:['Pop-Eyed','Press them and the eyes pop out.'], air:['Air Pressure','Punch it and it flies. One hit launches the ammo.'],
+        tanks:['Tanks','Air Pressure tanks that fire ammo. Kids play with them for hours.'], cars:['Cars','Air Pressure cars. More cars are on the way.'],
+        apm:['APM','Air Pressure Modules: swap the modules, print less, play more.'], spin:['Spin Tops','Easy-print spin tops and launchers.'],
+        hands:['Grabbers','Robot hands and grabbers. Grab anything, even chips.'], puzzle:['Puzzles','Pocket-size sliding puzzles.'],
+        more:['More toys','Little gadgets and fun extras.'], xmas:['Christmas','Toys for the holidays.'], halloween:['Halloween','Spooky toys for October.']};
+      const d0 = DESC[(location.hash || '').slice(1)];
+      if (d0){ document.getElementById('cat-title').textContent = d0[0]; document.getElementById('cat-desc').textContent = d0[1] + ' Free toys download on MakerWorld; members-only toys are on Patreon.'; }
       const f = (location.hash || '#all').slice(1), text = q.value.trim().toLowerCase(), p = plat.value;
       chips.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.id === 'f-' + f));
       const hit = x => f === 'all' || x.s === f || x.z === f || (f === 'apm' && /APM/.test(x.t)) || (f === 'tanks' && /tank/i.test(x.t)) || (f === 'cars' && /(^|[^a-z])car([^a-z]|$)|roadster/i.test(x.t));
