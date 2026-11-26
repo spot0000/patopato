@@ -16,10 +16,14 @@
   // header + footer
   const here = (location.pathname.split('/').pop() || 'index.html');
   const top = document.getElementById('top');
-  if (top) top.innerHTML = '<div class="wrap"><a class="logo" href="index.html"><img src="img/logo.png" alt="" width="40" height="40">Patopato</a><nav class="nav" aria-label="Main">' +
-    '<a href="toys.html">All toys</a><a class="hide-s" href="toys.html#pop">Pop-Eyed</a><a class="hide-s" href="toys.html#air">Air Pressure</a>' +
-    '<a href="sellers.html">Sellers</a><a class="hide-s" href="about.html">About</a>' +
+  // top nav: category tabs with simplified product pictures (Louis 11/26: combine with the text tabs, Apple-style)
+  const TABS = [['pop','Pop-Eyed'],['air','Air Pressure'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles']];
+  const curHash = (location.hash || '').slice(1);
+  if (top) top.innerHTML = '<div class="wrap topbar"><a class="logo" href="index.html"><img src="img/logo.png" alt="" width="40" height="40">Patopato</a>' +
+    '<nav class="tabs" aria-label="Toy categories">' + TABS.map(t => '<a class="tab' + (here === 'toys.html' && curHash === t[0] ? ' on' : '') + '" href="toys.html#' + t[0] + '"><img src="img/cat-' + t[0] + '.png" alt="" width="44" height="44"><span>' + t[1] + '</span></a>').join('') + '</nav>' +
+    '<nav class="nav" aria-label="Main"><a href="toys.html">All toys</a><a href="sellers.html">Sellers</a><a class="hide-s" href="about.html">About</a>' +
     '<a class="btn small" href="' + LINKS.patreon + '" target="_blank" rel="noopener">Join on Patreon</a></nav></div>';
+  window.addEventListener('hashchange', () => { const h = location.hash.slice(1); document.querySelectorAll('.tabs .tab').forEach(x => x.classList.toggle('on', x.getAttribute('href') === 'toys.html#' + h)); });
   const foot = document.getElementById('foot');
   if (foot) foot.innerHTML = '<div class="wrap"><a class="logo" href="index.html" style="color:#fff"><img src="img/logo.png" alt="" width="48" height="48">Patopato</a>' +
     '<p>Toys by Louis, a mechanical engineer and a dad of two boys. Even the springs are 3D printed.</p>' +

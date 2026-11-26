@@ -218,3 +218,14 @@ h2,h3{letter-spacing:-.3px}
 .cat:hover .ico{transform:translateY(-3px)}
 .cat svg{width:50px;height:50px}
 @media (max-width:760px){.catstrip{justify-content:flex-start}.cat{width:84px;font-size:12.5px}.cat .ico{width:60px;height:60px;border-radius:16px}.cat svg{width:42px;height:42px}}
+
+/* top bar with picture tabs */
+.top .topbar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;min-height:76px}
+.tabs{display:flex;justify-content:center;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;display:grid;justify-items:center;gap:2px;padding:6px 10px 5px;border-radius:12px;text-decoration:none;font:500 12.5px var(--display);color:var(--ink);transition:background .15s}
+.tab img{width:44px;height:44px;object-fit:contain;transition:transform .2s}
+.tab:hover{background:#fff}.tab:hover img{transform:translateY(-2px) scale(1.06)}
+.tab.on{background:#fff;box-shadow:inset 0 -3px 0 var(--orange)}
+@media (max-width:1040px){.top .topbar{grid-template-columns:auto auto;grid-template-areas:"logo nav" "tabs tabs";row-gap:0;padding-block:6px}.topbar .logo{grid-area:logo}.topbar .nav{grid-area:nav;justify-self:end}.tabs{grid-area:tabs;justify-content:flex-start}}
+@media (max-width:600px){.tab img{width:38px;height:38px}.tab{font-size:11.5px;padding:4px 8px}}
