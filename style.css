@@ -196,3 +196,12 @@ p{margin:0}
 /* Louis 11/26: rounded font felt cartoonish to read. Fredoka now only for the logo and the main headline. */
 .hero h1{font-family:var(--brand);font-weight:600;letter-spacing:-.5px}
 h2,h3{letter-spacing:-.3px}
+
+/* seller page: certificate + FAQ */
+.cert{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+@media (max-width:760px){.cert{grid-template-columns:1fr}}
+.cert img{width:100%;border-radius:12px;box-shadow:0 8px 28px rgba(60,40,10,.14)}
+.faq{display:grid;gap:10px;max-width:760px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.faq summary{font:600 16px var(--display);cursor:pointer}
+.faq details p{margin-top:8px;color:var(--muted)}
