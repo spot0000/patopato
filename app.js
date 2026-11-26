@@ -152,13 +152,23 @@
       else if (p === 'MakerWorld') pat = [];
       else if (p !== 'any'){ mw = mw.filter(m => m.x.includes(p)); pat = []; }
       if (text){ mw = mw.filter(m => m.t.toLowerCase().includes(text)); pat = pat.filter(x => x.t.toLowerCase().includes(text)); }
-      mw = mw.slice().sort(sort.value === 'new' ? (a, b) => b.p.localeCompare(a.p) : (a, b) => b.d - a.d);
-      grid.innerHTML = (mw.map(mwCard).join('') + pat.map(patCard).join('')) || '<p class="muted">No toys match. Try another word or platform.</p>';
+      // one combined list so every sort mixes free and members toys (Louis 11/27)
+      const items = mw.map(m => ({kind:'mw', o:m, date:m.p, pop:m.d, price:0}))
+        .concat(pat.map(x => ({kind:'pat', o:x, date:x.p || '', pop:-1, price:(x.pr == null ? 999 : x.pr)})));
+      const by = {
+        pop: (a, b) => b.pop - a.pop || b.date.localeCompare(a.date),
+        new: (a, b) => b.date.localeCompare(a.date),
+        price: (a, b) => a.price - b.price || b.pop - a.pop
+      }[sort.value] || ((a, b) => b.pop - a.pop);
+      items.sort(by);
+      grid.innerHTML = items.map(it => it.kind === 'mw' ? mwCard(it.o) : patCard(it.o)).join('') || '<p class="muted">No toys match. Try another word or platform.</p>';
       count.textContent = (mw.length + pat.length) + ' toys';
       [['show-all','any'],['show-free','MakerWorld'],['show-members','Patreon']].forEach(([id, v]) => { const b = document.getElementById(id); if (b) b.classList.toggle('on', p === v); });
       const h = document.getElementById('toys-title'); if (h) h.textContent = (FILTERS.find(x => x[0] === f) || FILTERS[0])[1];
     }
     plat.addEventListener('change', render);
+    const catSort = document.getElementById('cat-sort');
+    if (catSort){ catSort.value = sort.value; catSort.addEventListener('change', () => { sort.value = catSort.value; render(); }); sort.addEventListener('change', () => { catSort.value = sort.value; }); }
     [['show-all','any'],['show-free','MakerWorld'],['show-members','Patreon']].forEach(([id, v]) => { const b = document.getElementById(id); if (b) b.addEventListener('click', e => { e.preventDefault(); plat.value = v; render(); }); });
     if (params.get('show') === 'members') plat.value = 'Patreon'; else if (params.get('show') === 'free') plat.value = 'MakerWorld';
     window.addEventListener('hashchange', render); q.addEventListener('input', render); sort.addEventListener('change', render); render();
