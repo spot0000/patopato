@@ -315,3 +315,35 @@ h1,h2,.sub,.stats li{overflow-wrap:anywhere}
 .hero-cat h1,.hero .sub{max-width:min(18ch,100%)}
 .hero .sub{max-width:min(60ch,100%)}
 .logo .beta{font:600 11px Inter,system-ui,sans-serif;letter-spacing:.5px;text-transform:uppercase;color:#fff;background:var(--orange);border-radius:999px;padding:2px 7px;margin-left:-4px;align-self:flex-start;margin-top:2px}
+/* play page (Louis 11/27) */
+.play{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:18px;align-items:start}
+.stage{position:relative;height:min(62vh,560px);background:radial-gradient(ellipse at 50% 40%,#fff 0%,var(--orange-soft) 100%);border-radius:24px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.stage canvas{display:block;width:100%;height:100%}
+.stage .note{position:absolute;inset:0;display:grid;place-items:center;font:600 16px var(--display);color:var(--orange-ink)}
+.popcount{position:absolute;right:14px;top:12px;font:600 14px var(--display);background:#fff;border-radius:99px;padding:6px 12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.popcount b{display:inline-block;color:var(--orange-ink)}
+.popcount b.bump{animation:bump .25s}
+@keyframes bump{50%{transform:scale(1.5)}}
+.toast{position:absolute;left:50%;top:16px;transform:translate(-50%,-20px);opacity:0;transition:.25s;font:700 16px var(--display);background:var(--orange);color:#fff;border-radius:99px;padding:8px 16px;white-space:nowrap;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.big{font-size:20px;padding:12px 22px;top:40%}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;top:-12px;width:9px;height:14px;border-radius:2px;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{top:110%;opacity:.6}}
+.play-info{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;flex-wrap:wrap}
+.play-info b{font:700 20px var(--display)}
+.picker{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.picker button{display:flex;flex-direction:column;align-items:center;gap:4px;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px;cursor:pointer;font:600 13px var(--display);color:var(--ink)}
+.picker button img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+.picker button.on{border-color:var(--orange);background:var(--orange-soft)}
+@media (max-width:760px){.play{grid-template-columns:minmax(0,1fr)}.stage{height:58vh}.picker{grid-template-columns:repeat(7,minmax(64px,1fr));overflow-x:auto}.picker button{font-size:11px;padding:4px}}
+/* play banner (homepage + toy grid) */
+.play-banner{display:flex;align-items:center;gap:16px;background:var(--orange-soft);border-radius:20px;padding:14px 18px;text-decoration:none;color:var(--ink)}
+.play-banner img{width:84px;height:84px;object-fit:cover;border-radius:14px;flex:0 0 auto}
+.play-banner b{display:block;font:700 19px var(--display)}
+.play-banner span{color:var(--muted,#666);font-size:14px}
+.play-banner .btn{margin-left:auto}
+.grid .play-banner{grid-column:1/-1}
+@media (max-width:560px){.play-banner .btn{display:none}.play-banner img{width:64px;height:64px}}
+.stage .note[hidden]{display:none}
+@media (max-width:760px){.play-main{display:contents}.stage{order:1;height:46vh}.picker{order:2}.play-info{order:3;margin-top:0}}

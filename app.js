@@ -19,7 +19,7 @@ const patUrl = u => SHORT[u] || u;
   const here = (location.pathname.split('/').pop() || 'index.html');
   const top = document.getElementById('top');
   // right-side tabs in the same picture style (Louis 11/26)
-  const SIDE = [['toys.html','all','All toys',''],['sellers.html','sellers','Sellers',''],['about.html','about','About',''],[LINKS.patreon,'patreon','Join on Patreon',' pat']];
+  const SIDE = [['play.html','play','Play',''],['toys.html','all','All toys',''],['sellers.html','sellers','Sellers',''],['about.html','about','About',''],[LINKS.patreon,'patreon','Join on Patreon',' pat']];
   // top nav: category tabs with simplified product pictures (Louis 11/26: combine with the text tabs, Apple-style)
   const TABS = [['pop','Pop-Eyed'],['air','Air Pressure'],['tanks','Tanks'],['cars','Cars'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles']];
   const curHash = (location.hash || '').slice(1);
@@ -125,6 +125,9 @@ const patUrl = u => SHORT[u] || u;
     document.getElementById('total').textContent = all.length;
   }
 
+  const PLAY_BANNER = '<a class="play-banner" href="play.html"><img src="img/p_pop-eyed-duck-v2.jpg" alt=""><div><b>Play Pop-Eyed online</b><span>Press and hold to pop the eyes. Try all 7 in 3D.</span></div><span class="btn">Play now ›</span></a>';
+  const pb = document.getElementById('play-banner'); if (pb) pb.innerHTML = PLAY_BANNER;
+
   // ---------- toys page ----------
   const grid = document.getElementById('grid');
   if (grid){
@@ -171,7 +174,10 @@ const patUrl = u => SHORT[u] || u;
         free.forEach((it, idx) => { mixed.push(it); if (idx + 1 === next && paid.length){ mixed.push(paid.shift()); next += 2 + Math.floor(Math.random() * 3); } });
         items.splice(0, items.length, ...mixed, ...paid);
       }
-      grid.innerHTML = items.map(it => it.kind === 'mw' ? mwCard(it.o) : patCard(it.o)).join('') || '<p class="muted">No toys match. Try another word or platform.</p>';
+      const cards = items.map(it => it.kind === 'mw' ? mwCard(it.o) : patCard(it.o));
+      // Play banner after the 8th card on Pop-Eyed and All toys (Louis 11/27)
+      if ((f === 'pop' || f === 'all') && !text && cards.length > 8) cards.splice(8, 0, PLAY_BANNER);
+      grid.innerHTML = cards.join('') || '<p class="muted">No toys match. Try another word or platform.</p>';
       count.textContent = (mw.length + pat.length) + ' toys';
       [['show-all','any'],['show-free','MakerWorld'],['show-members','Patreon']].forEach(([id, v]) => { const b = document.getElementById(id); if (b) b.classList.toggle('on', p === v); });
       const h = document.getElementById('toys-title'); if (h) h.textContent = (FILTERS.find(x => x[0] === f) || FILTERS[0])[1];
