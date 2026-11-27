@@ -373,3 +373,19 @@ h1,h2,.sub,.stats li{overflow-wrap:anywhere}
 .tab.playtab.arrow::after{background-image:url(img/cursor-arrow.svg);width:13px;height:20px}
 @keyframes tap{0%,100%{transform:translate(0,0)}50%{transform:translate(-3px,-4px)}}
 @media (prefers-reduced-motion:reduce){.tab.playtab::after{animation:none}}
+/* fix (Louis 11/27): normal and popped pictures overlapped -> swap instantly, hide the normal one while popped */
+.play-banner .demo img.pop{animation:popshow 2.4s step-end infinite}
+.play-banner .demo img:not(.pop){animation:baseshow 2.4s step-end infinite}
+.play-banner .d1 img:not(.pop){animation-delay:.8s}
+.play-banner .d2 img:not(.pop){animation-delay:1.6s}
+@keyframes popshow{0%{opacity:0}25%{opacity:1}62%{opacity:0}}
+@keyframes baseshow{0%{opacity:1}25%{opacity:0}62%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.play-banner .demo img{animation:none}}
+.play-banner .d1 img,.play-banner .d1 i{animation-delay:-1.6s}
+.play-banner .d2 img,.play-banner .d2 i{animation-delay:-.8s}
+/* banner timing, final */
+.play-banner .demo img.pop{animation:popshow 2.4s step-end infinite}
+.play-banner .demo img:not(.pop){animation:baseshow 2.4s step-end infinite}
+.play-banner .demo i{animation:pressf 2.4s infinite}
+.play-banner .demo.d1 img.pop,.play-banner .demo.d1 img:not(.pop),.play-banner .demo.d1 i{animation-delay:-1.6s}
+.play-banner .demo.d2 img.pop,.play-banner .demo.d2 img:not(.pop),.play-banner .demo.d2 i{animation-delay:-.8s}
