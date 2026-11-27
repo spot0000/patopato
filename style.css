@@ -314,3 +314,4 @@ h1,h2,.sub,.stats li{overflow-wrap:anywhere}
 .hero,.section,.page-head,.cat-head{grid-template-columns:minmax(0,1fr)}
 .hero-cat h1,.hero .sub{max-width:min(18ch,100%)}
 .hero .sub{max-width:min(60ch,100%)}
+.logo .beta{font:600 11px Inter,system-ui,sans-serif;letter-spacing:.5px;text-transform:uppercase;color:#fff;background:var(--orange);border-radius:999px;padding:2px 7px;margin-left:-4px;align-self:flex-start;margin-top:2px}

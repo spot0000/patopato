@@ -24,7 +24,7 @@ const patUrl = u => SHORT[u] || u;
   const TABS = [['pop','Pop-Eyed'],['air','Air Pressure'],['tanks','Tanks'],['cars','Cars'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles']];
   const curHash = (location.hash || '').slice(1);
   const sideHtml = () => '<span class="tabdiv" aria-hidden="true"></span>' + SIDE.map(s => '<a class="tab' + s[3] + (here === s[0] && !(s[0] === 'toys.html' && curHash) ? ' on' : '') + '" href="' + s[0] + '"' + (s[0].startsWith('http') ? ' target="_blank" rel="noopener"' : '') + '><img src="img/cat-' + s[1] + '.png" alt="" width="44" height="44"><span>' + s[2] + '</span></a>').join('') + '</nav></div>';
-  if (top) top.innerHTML = '<div class="wrap topbar"><a class="logo" href="index.html"><img src="img/logo.png" alt="" width="40" height="40">Patopato</a>' +
+  if (top) top.innerHTML = '<div class="wrap topbar"><a class="logo" href="index.html"><img src="img/logo.png" alt="" width="40" height="40">Patopato<span class="beta">Beta</span></a>' +
     '<nav class="tabs" aria-label="Main">' + TABS.map(t => '<a class="tab' + (here === 'toys.html' && curHash === t[0] ? ' on' : '') + '" href="toys.html#' + t[0] + '"><img src="img/cat-' + t[0] + '.png" alt="" width="44" height="44"><span>' + t[1] + '</span></a>').join('') +
     sideHtml();
 
