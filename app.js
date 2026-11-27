@@ -11,7 +11,9 @@
   const SERIES = {pop:'Pop-Eyed', air:'Air Pressure', hands:'Robot hands', spin:'Spin & fly', puzzle:'Puzzles', more:'More toys'};
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const k = n => n >= 1000 ? (n/1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/,'') + 'K' : String(n);
-  const mwUrl = id => 'https://makerworld.com/en/models/' + id;
+  const SHORT = window.PP_SHORT || {};
+const mwUrl = id => SHORT[id] || 'https://makerworld.com/en/models/' + id;
+const patUrl = u => SHORT[u] || u;
 
   // header + footer
   const here = (location.pathname.split('/').pop() || 'index.html');
@@ -49,7 +51,7 @@
       '<div class="body"><b>' + esc(m.t) + '</b><span class="line">' + dl(m.d) + '<span class="go">Download ›</span></span></div></a>';
   }
   function patCard(p){
-    return '<a class="toy" href="' + p.u + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + p.img + '" alt="' + esc(p.t) + '">' + (p.pr === 0 ? '<i class="badge free">Free</i>' : '<i class="badge pat">Members</i>') + '</span>' +
+    return '<a class="toy" href="' + patUrl(p.u) + '" target="_blank" rel="noopener"><span class="pic"><img loading="lazy" src="img/' + p.img + '" alt="' + esc(p.t) + '">' + (p.pr === 0 ? '<i class="badge free">Free</i>' : '<i class="badge pat">Members</i>') + '</span>' +
       '<div class="body"><b>' + esc(p.t) + '</b><span class="line">' + (p.pr === 0 ? '<span class="pill free">Free</span>' : p.pr ? '<span class="pill price">$' + p.pr + '</span>' : '<span class="pill price">Members</span>') + '<span class="go">Patreon ›</span></span></div></a>';
   }
   window.PP_CARDS = {mwCard, patCard};
@@ -110,7 +112,7 @@
   if (crank){
     const out = document.getElementById('prize'), globe = document.getElementById('globe'), shelf = document.getElementById('collected'), cnt = document.getElementById('count');
     const all = MW.map(m => ({img:'img/' + m.id + '.jpg', t:m.t, u:mwUrl(m.id), where:'Download on MakerWorld'}))
-      .concat(PAT.map(p => ({img:'img/' + p.img, t:p.t, u:p.u, where:'Get it on Patreon'})));
+      .concat(PAT.map(p => ({img:'img/' + p.img, t:p.t, u:patUrl(p.u), where:'Get it on Patreon'})));
     const got = new Set();
     crank.addEventListener('click', () => {
       crank.classList.remove('turn'); globe.classList.remove('shake'); void crank.offsetWidth; crank.classList.add('turn'); globe.classList.add('shake');
