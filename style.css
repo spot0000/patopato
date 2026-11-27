@@ -369,6 +369,7 @@ h1,h2,.sub,.stats li{overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){.play-banner .demo img.pop,.play-banner .demo i,.bubble{animation:none}}
 /* Play tab: little hand cursor on the icon so it reads as "you can play" (Louis 11/27) */
 .tab.playtab{position:relative}
-.tab.playtab::after{content:"👆";position:absolute;left:50%;top:24px;margin-left:4px;font-size:19px;line-height:1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));animation:tap 1.6s ease-in-out infinite}
+.tab.playtab::after{content:"";position:absolute;left:50%;top:22px;margin-left:6px;width:16px;height:24px;background:url(img/cursor-hand.svg) no-repeat center/contain;filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.35));animation:tap 1.6s ease-in-out infinite}
+.tab.playtab.arrow::after{background-image:url(img/cursor-arrow.svg);width:13px;height:20px}
 @keyframes tap{0%,100%{transform:translate(0,0)}50%{transform:translate(-3px,-4px)}}
 @media (prefers-reduced-motion:reduce){.tab.playtab::after{animation:none}}
