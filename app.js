@@ -125,7 +125,7 @@ const patUrl = u => SHORT[u] || u;
     document.getElementById('total').textContent = all.length;
   }
 
-  const PLAY_BANNER = '<a class="play-banner" href="play.html"><span class="demos"><span class=\"demo d0\"><img src=\"img/play/pop-eyed-duck-v2.png\" alt=\"\"><img class=\"pop\" src=\"img/play/pop-eyed-duck-v2-pop.png\" alt=\"\"><i>👇</i></span><span class=\"demo d1\"><img src=\"img/play/pop-eyed-cactus.png\" alt=\"\"><img class=\"pop\" src=\"img/play/pop-eyed-cactus-pop.png\" alt=\"\"><i>👇</i></span><span class=\"demo d2\"><img src=\"img/play/pop-eyed-pumpkin-cat.png\" alt=\"\"><img class=\"pop\" src=\"img/play/pop-eyed-pumpkin-cat-pop.png\" alt=\"\"><i>👇</i></span></span><div><b>Press it. The eyes pop out!</b><span>Play with 7 Pop-Eyed toys in 3D, right here.</span></div><span class="btn">Play now ›</span></a>';
+  const PLAY_BANNER = '<a class="play-banner" href="play.html"><span class="demos"><span class=\"demo d0\"><img src=\"img/play/pop-eyed-duck-v2.png\" alt=\"\"><img class=\"pop\" src=\"img/play/pop-eyed-duck-v2-pop.png\" alt=\"\"><i>👇</i></span><span class=\"demo d1\"><img src=\"img/play/pop-eyed-cactus.png\" alt=\"\"><img class=\"pop\" src=\"img/play/pop-eyed-cactus-pop.png\" alt=\"\"><i>👇</i></span><span class=\"demo d2\"><img src=\"img/play/pop-eyed-pumpkin-cat.png\" alt=\"\"><img class=\"pop\" src=\"img/play/pop-eyed-pumpkin-cat-pop.png\" alt=\"\"><i>👇</i></span></span><div><b>Try Pop-Eyed online</b><span>Press it and the eyes pop out. 7 toys in 3D, free to play.</span></div><span class="btn">Play now ›</span></a>';
   const pb = document.getElementById('play-banner'); if (pb) pb.innerHTML = PLAY_BANNER;
 
   // ---------- toys page ----------
