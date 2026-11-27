@@ -140,6 +140,8 @@ const patUrl = u => SHORT[u] || u;
     const params = new URLSearchParams(location.search);
     if (params.get('q')) q.value = params.get('q');
     if (location.hash === '#patreon'){ plat.value = 'Patreon'; history.replaceState(null, '', location.pathname + location.search + '#all'); }
+    const gridCols = () => getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length || 1;
+    let lastCols = 0; new ResizeObserver(() => { const c = gridCols(); if (lastCols && c !== lastCols) render(); lastCols = c; }).observe(grid);
     function render(){
       // compact view everywhere except when someone searched from the homepage (Louis 11/27)
       document.body.classList.toggle('cat-view', !q.value.trim());
@@ -176,7 +178,9 @@ const patUrl = u => SHORT[u] || u;
       }
       const cards = items.map(it => it.kind === 'mw' ? mwCard(it.o) : patCard(it.o));
       // Play banner after the 8th card on Pop-Eyed and All toys (Louis 11/27)
-      if ((f === 'pop' || f === 'all') && !text && cards.length > 8) cards.splice(8, 0, PLAY_BANNER);
+      // after full rows only: 2 rows (3 rows on 2-column phones), so no gaps (Louis 11/27)
+      const cols = gridCols(), at = cols * (cols <= 2 ? 3 : 2);
+      if ((f === 'pop' || f === 'all') && !text && cards.length > at) cards.splice(at, 0, PLAY_BANNER);
       grid.innerHTML = cards.join('') || '<p class="muted">No toys match. Try another word or platform.</p>';
       count.textContent = (mw.length + pat.length) + ' toys';
       [['show-all','any'],['show-free','MakerWorld'],['show-members','Patreon']].forEach(([id, v]) => { const b = document.getElementById(id); if (b) b.classList.toggle('on', p === v); });
