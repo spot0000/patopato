@@ -120,5 +120,6 @@
     renderer.render(scene, cam); requestAnimationFrame(tick); }
   requestAnimationFrame(tick);
 
-  show(Math.floor(Math.random() * LIST.length)); // random first toy every visit (Louis 11/27)
+  // random first toy every visit, but never Fat Cat (its pop is hard to see; Louis 11/27)
+  { const pool = LIST.map((x, i) => i).filter(i => LIST[i][0] !== 'pop-eyed-fat-cat'); show(pool[Math.floor(Math.random() * pool.length)]); }
 })();
