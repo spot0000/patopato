@@ -367,3 +367,8 @@ h1,h2,.sub,.stats li{overflow-wrap:anywhere}
 @media (max-width:760px){.play-banner .d1,.play-banner .d2{display:none}}
 @media (max-width:560px){.play-banner{padding:12px 14px;gap:12px}.play-banner .demo{width:84px;height:84px}.play-banner b{font-size:18px}}
 @media (prefers-reduced-motion:reduce){.play-banner .demo img.pop,.play-banner .demo i,.bubble{animation:none}}
+/* Play tab: little hand cursor on the icon so it reads as "you can play" (Louis 11/27) */
+.tab.playtab{position:relative}
+.tab.playtab::after{content:"👆";position:absolute;left:50%;top:24px;margin-left:4px;font-size:19px;line-height:1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));animation:tap 1.6s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translate(0,0)}50%{transform:translate(-3px,-4px)}}
+@media (prefers-reduced-motion:reduce){.tab.playtab::after{animation:none}}

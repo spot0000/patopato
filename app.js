@@ -19,7 +19,7 @@ const patUrl = u => SHORT[u] || u;
   const here = (location.pathname.split('/').pop() || 'index.html');
   const top = document.getElementById('top');
   // right-side tabs in the same picture style (Louis 11/26)
-  const SIDE = [['play.html','play','Play',''],['toys.html','all','All toys',''],['sellers.html','sellers','Sellers',''],['about.html','about','About',''],[LINKS.patreon,'patreon','Join on Patreon',' pat']];
+  const SIDE = [['play.html','play','Play',' playtab'],['toys.html','all','All toys',''],['sellers.html','sellers','Sellers',''],['about.html','about','About',''],[LINKS.patreon,'patreon','Join on Patreon',' pat']];
   // top nav: category tabs with simplified product pictures (Louis 11/26: combine with the text tabs, Apple-style)
   const TABS = [['pop','Pop-Eyed'],['air','Air Pressure'],['tanks','Tanks'],['cars','Cars'],['apm','APM'],['spin','Spin Tops'],['hands','Grabbers'],['puzzle','Puzzles']];
   const curHash = (location.hash || '').slice(1);
