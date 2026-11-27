@@ -2,10 +2,10 @@
 (function(){
   const MW = window.PP_MW || [], PAT = window.PP_PATREON || [];
   const LINKS = {
-    mw:'https://makerworld.com/en/@spot5438', patreon:'https://www.patreon.com/Patopato_design',
-    thangs:'https://thangs.com/designer/Patopato%20design', nexprint:'https://www.nexprint.com/en/search/creators?keyword=Patopato_design',
-    yt:'https://www.youtube.com/@Patopato_design', ig:'https://www.instagram.com/patopato_design/',
-    course:'https://makerworld.com/en/maker-kids/course/FCX8RW7V'
+    mw:'https://patopato.s.gy/web-mw', patreon:'https://patopato.s.gy/web-patreon',
+    thangs:'https://patopato.s.gy/web-thangs', nexprint:'https://patopato.s.gy/web-nexprint',
+    yt:'https://patopato.s.gy/web-yt', ig:'https://patopato.s.gy/web-ig',
+    course:'https://patopato.s.gy/web-course'
   };
   window.PP_LINKS = LINKS;
   const SERIES = {pop:'Pop-Eyed', air:'Air Pressure', hands:'Robot hands', spin:'Spin & fly', puzzle:'Puzzles', more:'More toys'};
