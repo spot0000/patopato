@@ -178,8 +178,8 @@ const patUrl = u => SHORT[u] || u;
       }
       const cards = items.map(it => it.kind === 'mw' ? mwCard(it.o) : patCard(it.o));
       // Play banner after the 8th card on Pop-Eyed and All toys (Louis 11/27)
-      // after full rows only: 2 rows (3 rows on 2-column phones), so no gaps (Louis 11/27)
-      const cols = gridCols(), at = cols * (cols <= 2 ? 3 : 2);
+      // right after the first full row so it shows on the first screen (Louis 11/27)
+      const cols = gridCols(), at = cols;
       if ((f === 'pop' || f === 'all') && !text && cards.length > at) cards.splice(at, 0, PLAY_BANNER);
       grid.innerHTML = cards.join('') || '<p class="muted">No toys match. Try another word or platform.</p>';
       count.textContent = (mw.length + pat.length) + ' toys';
