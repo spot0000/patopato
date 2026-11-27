@@ -347,3 +347,23 @@ h1,h2,.sub,.stats li{overflow-wrap:anywhere}
 @media (max-width:560px){.play-banner .btn{display:none}.play-banner img{width:64px;height:64px}}
 .stage .note[hidden]{display:none}
 @media (max-width:760px){.play-main{display:contents}.stage{order:1;height:46vh}.picker{order:2}.play-info{order:3;margin-top:0}}
+/* v2 (Louis 11/27): rendered thumbs, press-me bubble, banner that shows what happens */
+.picker button img{object-fit:contain;background:var(--orange-soft)}
+.bubble{position:absolute;left:50%;top:14%;transform:translateX(-50%);background:#fff;color:var(--orange-ink);font:700 16px var(--display);padding:9px 16px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.12);pointer-events:none;white-space:nowrap;animation:hop 1.2s ease-in-out infinite;z-index:2}
+.bubble::after{content:"";position:absolute;left:50%;bottom:-8px;margin-left:-8px;border:8px solid transparent;border-bottom:0;border-top-color:#fff}
+.bubble[hidden]{display:none}
+@keyframes hop{50%{transform:translate(-50%,-6px)}}
+.play-banner{padding:16px 22px;gap:20px;border:2px solid #f6d3ac}
+.play-banner .demos{display:flex;gap:4px;flex:0 0 auto}
+.play-banner .demo{position:relative;width:104px;height:104px;display:block}
+.play-banner .demo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:0;background:none}
+.play-banner .demo img.pop{opacity:0;animation:popshow 2.4s infinite}
+.play-banner .demo i{position:absolute;left:50%;top:-14px;margin-left:-11px;font-style:normal;font-size:22px;animation:pressf 2.4s infinite}
+.play-banner .d1 img.pop,.play-banner .d1 i{animation-delay:.8s}
+.play-banner .d2 img.pop,.play-banner .d2 i{animation-delay:1.6s}
+@keyframes popshow{0%,22%{opacity:0}26%,60%{opacity:1}64%,100%{opacity:0}}
+@keyframes pressf{0%,10%{transform:translateY(-6px);opacity:0}16%{opacity:1}24%,60%{transform:translateY(4px);opacity:1}68%,100%{transform:translateY(-6px);opacity:0}}
+.play-banner b{font-size:22px}
+@media (max-width:760px){.play-banner .d1,.play-banner .d2{display:none}}
+@media (max-width:560px){.play-banner{padding:12px 14px;gap:12px}.play-banner .demo{width:84px;height:84px}.play-banner b{font-size:18px}}
+@media (prefers-reduced-motion:reduce){.play-banner .demo img.pop,.play-banner .demo i,.bubble{animation:none}}

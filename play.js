@@ -6,13 +6,13 @@
   const pat = u => SHORT[u] || u;
   // [file, name, thumb, link, link label]
   const LIST = [
-    ['pop-eyed-duck-v2','Duck V2','img/p_pop-eyed-duck-v2.jpg',pat('https://www.patreon.com/Patopato_design/posts/bonus-model-1-v2-169124528'),'Get it on Patreon'],
-    ['pop-eyed-cactus','Cactus','img/2632867.jpg',mw('2632867'),'Download free on MakerWorld'],
-    ['pop-eyed-moai','Moai','img/2561764.jpg',mw('2561764'),'Download free on MakerWorld'],
-    ['pop-eyed-owl','Owl','img/3502170.jpg',mw('3502170'),'Download free on MakerWorld'],
-    ['pop-eyed-skull','Skull','img/3432570.jpg',mw('3432570'),'Download free on MakerWorld'],
-    ['pop-eyed-fat-cat','Fat Cat','img/2730709.jpg',mw('2730709'),'Download free on MakerWorld'],
-    ['pop-eyed-pumpkin-cat','Pumpkin Cat','img/p_pop-eyed-pumpkin-cat.jpg',pat('https://www.patreon.com/Patopato_design/posts/october-model-1-171091808'),'Get it on Patreon']
+    ['pop-eyed-duck-v2','Duck V2','img/play/pop-eyed-duck-v2.png',pat('https://www.patreon.com/Patopato_design/posts/bonus-model-1-v2-169124528'),'Get it on Patreon'],
+    ['pop-eyed-cactus','Cactus','img/play/pop-eyed-cactus.png',mw('2632867'),'Download free on MakerWorld'],
+    ['pop-eyed-moai','Moai','img/play/pop-eyed-moai.png',mw('2561764'),'Download free on MakerWorld'],
+    ['pop-eyed-owl','Owl','img/play/pop-eyed-owl.png',mw('3502170'),'Download free on MakerWorld'],
+    ['pop-eyed-skull','Skull','img/play/pop-eyed-skull.png',mw('3432570'),'Download free on MakerWorld'],
+    ['pop-eyed-fat-cat','Fat Cat','img/play/pop-eyed-fat-cat.png',mw('2730709'),'Download free on MakerWorld'],
+    ['pop-eyed-pumpkin-cat','Pumpkin Cat','img/play/pop-eyed-pumpkin-cat.png',pat('https://www.patreon.com/Patopato_design/posts/october-model-1-171091808'),'Get it on Patreon']
   ];
   const stage = document.getElementById('stage'); if (!stage || !window.THREE) return;
   const note = document.getElementById('stage-note'), picker = document.getElementById('picker');
@@ -76,7 +76,8 @@
     ray.setFromCamera(ndc, cam); const p = new THREE.Vector3(); if (ray.ray.intersectPlane(plane, p)) look.copy(p); }
   window.addEventListener('pointermove', setPointer);
   let down = null;
-  function press(){ if (!it || !it.actions.length) return; it.holding = true; it.cycle = true;
+  const bubble = document.getElementById('bubble');
+  function press(){ if (!it || !it.actions.length) return; if (bubble) bubble.hidden = true; it.holding = true; it.cycle = true;
     it.actions.forEach(a => { a.reset(); a.paused = false; a.timeScale = PRESS_SPEED; a.play(); }); popped(); }
   stage.addEventListener('pointerdown', e => { if (!it) return; setPointer(e);
     try { stage.setPointerCapture(e.pointerId); } catch (_){}
